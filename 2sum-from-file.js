@@ -1,4 +1,4 @@
-const fs = require('fs')
+import fs from 'fs'
 
 sumFromFile()
 .then(sum =>{console.log('res:', sum)})
@@ -10,8 +10,8 @@ function sumFromFile() {
                 reject(err)
                 return console.log('Cannot read file', err)
             }
-            const numbers = content.split('\r\n').map(Number)
-            const sum = numbers.reduce((acc, curr) => acc + curr, 0)
+            const numbers = content.split('\r\n')
+            const sum = numbers.reduce((acc, num) => acc + parseInt(num), 0)
             resolve(sum)
         })
     })
